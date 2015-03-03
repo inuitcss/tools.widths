@@ -28,6 +28,8 @@ $inuit-use-fractions: true !default;
     // Loop through the number of columns for each denominator of our fractions.
     @each $inuit-widths-denominator in $inuit-widths-columns {
 
+        // If we’re trying to make wholes, just spit a 100% width utility out
+        // one time only.
         @if ($inuit-widths-denominator == 1) {
             .#{$inuit-widths-namespace}u-1#{$inuit-widths-delimiter}1#{$inuit-widths-breakpoint} {
                 width: 100% !important;
