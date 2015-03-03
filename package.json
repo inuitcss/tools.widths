@@ -1,6 +1,6 @@
 {
   "name": "inuit-tools-widths",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "inuitcss’ widths generator",
   "main": "_tools.widths.scss",
   "repository": {
