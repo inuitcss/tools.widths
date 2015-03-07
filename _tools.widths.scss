@@ -25,6 +25,8 @@ $inuit-use-fractions: true !default;
 
 @mixin inuit-widths($inuit-widths-columns, $inuit-widths-breakpoint: null) {
 
+    $available-widths: ();
+
     // Loop through the number of columns for each denominator of our fractions.
     @each $inuit-widths-denominator in $inuit-widths-columns {
 
@@ -40,9 +42,23 @@ $inuit-use-fractions: true !default;
             // denominator.
             @for $inuit-widths-numerator from 1 to $inuit-widths-denominator {
 
-                // Build a class in the format `.u-3/4` or `.u-3-of-4`.
+                $width: ($inuit-widths-numerator / $inuit-widths-denominator) * 100%;
+                $width-id: w-#{floor($width / ($width * 0 + 1))};
+
+                // If the `width-id` isn't already available...
+                @if map-has-key($available-widths, $width-id) == false {
+                    // ...push it into it...
+                    $available-widths: map-merge($available-widths, (#{$width-id}: $width));
+
+                    // ...and build a silent class for it
+                    %#{$width-id} {
+                        width: $width !important;
+                    }
+                }
+
+                // Build a class in the format `.u-3/4` or `.u-3-of-4` and extend the available silent width class
                 .#{$inuit-widths-namespace}u-#{$inuit-widths-numerator}#{$inuit-widths-delimiter}#{$inuit-widths-denominator}#{$inuit-widths-breakpoint} {
-                    width: ($inuit-widths-numerator / $inuit-widths-denominator) * 100% !important;
+                    @extend %#{$width-id};
                 }
 
             }
