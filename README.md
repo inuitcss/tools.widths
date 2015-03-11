@@ -10,4 +10,4 @@ sizing.
 
 Install using Bower:
 
-    $ bower install --save inuit-tools-width
+    $ bower install --save inuit-tools-widths
