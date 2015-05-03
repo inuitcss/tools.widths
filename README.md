@@ -11,3 +11,7 @@ sizing.
 Install using Bower:
 
     $ bower install --save inuit-tools-widths
+
+Install using npm:
+
+    $ npm install --save inuit-tools-widths
