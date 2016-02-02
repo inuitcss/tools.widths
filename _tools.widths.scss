@@ -15,12 +15,14 @@ $inuit-widths-namespace: $inuit-namespace !default;
 // `<div class="u-1-of-4">`?
 $inuit-use-fractions: true !default;
 
+$inuit-widths-delimiter-alternative: -of- !default;
+
 // Depending on what we chose for `$inuit-use-fractions`, create the relevant
 // delimiter.
 @if ($inuit-use-fractions == true) {
     $inuit-widths-delimiter: \/ !global;
 } @else {
-    $inuit-widths-delimiter: -of- !global;
+    $inuit-widths-delimiter: $inuit-widths-delimiter-alternative;
 }
 
 @mixin inuit-widths($inuit-widths-columns, $inuit-widths-breakpoint: null) {
